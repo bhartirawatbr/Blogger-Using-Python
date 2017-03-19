@@ -1,0 +1,9 @@
+<html>
+<head>
+</head>
+<body>
+{% block email_verify_confirm %}
+{{ protocol }}://{{ site_name }}:{{ domain }}/user/email_verify_confirm/{{uid}}/{{token}}/
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,10 @@
+<html>
+<head>
+</head>
+<body>
+{% block email_verify_confirm %}
+{{ protocol }}://{{ domain }}/email_verify_confirm?uidb64={{uid}}&token={{token}}
+{% endblock %}
+{% trans "Thanks for using our site!" %}
+</body>
+</html>

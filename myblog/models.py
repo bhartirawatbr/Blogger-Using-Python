@@ -10,6 +10,7 @@ def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.user.id, filename)
 
 
+#https://docs.djangoproject.com/en/1.9/topics/db/managers/
 class Profile(models.Model):
     GENDER_STATUS = (("female",_("Female")),("male",_("Male")))
     user = models.ForeignKey(User)

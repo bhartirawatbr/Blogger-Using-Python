@@ -26,6 +26,31 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),)
+
+
+# # Application definition
+# TEMPLATE_CONTEXT_PROCESSORS = (
+#     "django.contrib.auth.context_processors.auth",
+#     "django.core.context_processors.request",
+#     "django.contrib.messages.context_processors.messages",
+# )
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 # Application definition
 
@@ -39,7 +64,8 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework_swagger',
     'rest_framework.authtoken',
-    'myblog'
+    'myblog',
+    'djcelery',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -54,7 +80,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'myblogger.urls'
 
 WSGI_APPLICATION = 'myblogger.wsgi.application'
-
+PROTOCOL = 'http'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
@@ -68,6 +94,19 @@ DATABASES = {
         'HOST': 'localhost',
     }
 }
+
+
+#celery using rabbitmq as a broker to send or receive the msgs.below the broker url
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+
+
+#Email Settings
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'verifyappmail@gmail.com'
+EMAIL_HOST_PASSWORD = 'verifyappmail@24'
+EMAIL_PORT = 587
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

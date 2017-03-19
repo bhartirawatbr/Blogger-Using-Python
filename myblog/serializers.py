@@ -12,6 +12,9 @@ class RegisterSerializer(serializers.ModelSerializer):
         read_only_fields = ('contact_no')
         write_only_fields = ('password')
 
+class EmailVerifySerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
 class ProfileSerializer(serializers.ModelSerializer):
     email = serializers.CharField(max_length=200)
     password = serializers.CharField(max_length=200)
